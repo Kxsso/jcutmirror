@@ -1,0 +1,30 @@
+code {
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace !important;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@keyframes circle-animation {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+// run animation for infinite times
+.status-circle-animation {
+    animation: circle-animation 1s infinite alternate ease-in-out both running;
+}
+
+::selection {
+    color: white;
+    background: #39DE96; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+    color: white;
+    background: #39DE96; /* Gecko Browsers */
+}

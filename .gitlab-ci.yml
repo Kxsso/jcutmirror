@@ -1,0 +1,29 @@
+image: node:lts-bullseye
+
+stages:
+  - build
+  - deploy
+
+gatsby-build:
+  stage: build
+  variables:
+    CHOKIDAR_USEPOLLING: 1
+  cache:
+    paths:
+    - node_modules/
+  script:
+  - bash cached-restore.sh
+  - yarn run build
+  artifacts:
+    paths:
+    - public
+
+deploy-webhook:
+  stage: deploy
+  only:
+  - main
+  script:
+  - curl "$WEBHOOK_DEPLOY_URL"
+  environment:
+    name: staging
+    url: https://mirrors.zju.edu.cn/index
