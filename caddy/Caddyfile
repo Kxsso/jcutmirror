@@ -1,6 +1,8 @@
 :8080 {
-	log {
-        	output file /var/log/caddy/access.log
+	handle /error/* {
+		file_server {
+			root /usr/share/nginx/html/err/
+		}
 	}
 	handle /rocky/* {
 		file_server {
@@ -148,7 +150,10 @@
 		reverse_proxy 127.0.0.1:7000
 	}
 	file_server {
-                root /home/mirror/jcutmirror/caddy/
-                index index.html
-        }
+		root /home/mirror/jcutmirror/caddy/
+		index index.html
+	}
+	log {
+		output file /var/log/caddy/access.log
+	}
 }
