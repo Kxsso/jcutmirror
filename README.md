@@ -1,4 +1,4 @@
-![cover](https://raw.githubusercontent.com/RalXYZ/repo-pictures/main/mirror-front/cover.png)  
+![cover](https://raw.githubusercontent.com/Kxsso/jcutmirror/master/resource/icons/nav.png)
 
 # 荆楚理工学院开源镜像站
 
