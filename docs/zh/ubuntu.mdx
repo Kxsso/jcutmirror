@@ -32,8 +32,40 @@ deb https://mirrors.jcut.edu.cn/ubuntu/ ${ubuntuName}-security main restricted u
 
 export const defaultVersion = Object.keys(ubuntuVersionMap).find(x => x.indexOf("LTS") > 0);
 
-Ubuntu 的软件源配置文件是 `/etc/apt/sources.list`。将系统自带的该文件做个备份，将该文件替换为下面内容，即可使用我们的软件源镜像。
+# Ubuntu 源使用帮助
+
+## 地址
+
+[https://mirrors.jcut.edu.cn/ubuntu/](https://mirrors.jcut.edu.cn/ubuntu/)
+
+## 说明
+
+*Ubuntu* 软件源
+
+## 收录架构
+
+amd64(X86_64), i386
+
+## 收录版本
+
+所有 *Ubuntu* 当前支持的版本，包括开发版，具体版本见 [https://wiki.ubuntu.com/Releases](https://wiki.ubuntu.com/Releases)
+
+---
+
+## 使用方法
+
+### 方法一
+
+一般情况下，将 `/etc/apt/sources.list` 文件中 *Ubuntu* 默认的源地址 `http://archive.ubuntu.com/` 替换为 `http://mirrors.jcut.edu.cn/` 即可。
+
+可以使用如下命令：
+
+```shell
+sudo sed -i 's@//.*archive.ubuntu.com@//mirrors.jcut.edu.cn@g' /etc/apt/sources.list
+```
+
+### 方法二
+
+直接编辑 `/etc/apt/sources.list` 文件（需要使用 `sudo`）。
 
 <ConfigGenerator promptString="请选择您的 Ubuntu 版本：" versionList={Object.keys(ubuntuVersionMap)} defaultVersion={defaultVersion} configGen={GenUbuntuConfig} language="bash" />
-
-本镜像仅包含 32/64 位 x86 架构处理器的软件包，在 ARM(arm64, armhf)、PowerPC(ppc64el)、RISC-V(riscv64) 和 S390x 等架构的设备上（对应官方源为`ports.ubuntu.com`）请使用 [ubuntu-ports](/docs/ubuntu-ports) 镜像。
