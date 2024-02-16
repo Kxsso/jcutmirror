@@ -32,29 +32,29 @@ deb https://mirrors.jcut.edu.cn/ubuntu/ ${ubuntuName}-security main restricted u
 
 export const defaultVersion = Object.keys(ubuntuVersionMap).find(x => x.indexOf("LTS") > 0);
 
-# Ubuntu 源使用帮助
+## Ubuntu 源使用帮助
 
-## 地址
+### 地址
 
 [https://mirrors.jcut.edu.cn/ubuntu/](https://mirrors.jcut.edu.cn/ubuntu/)
 
-## 说明
+### 说明
 
 *Ubuntu* 软件源
 
-## 收录架构
+### 收录架构
 
 amd64(X86_64), i386
 
-## 收录版本
+### 收录版本
 
 所有 *Ubuntu* 当前支持的版本，包括开发版，具体版本见 [https://wiki.ubuntu.com/Releases](https://wiki.ubuntu.com/Releases)
 
 ---
 
-## 使用方法
+### 使用方法
 
-### 方法一
+#### 方法一
 
 一般情况下，将 `/etc/apt/sources.list` 文件中 *Ubuntu* 默认的源地址 `http://archive.ubuntu.com/` 替换为 `http://mirrors.jcut.edu.cn/` 即可。
 
@@ -64,8 +64,7 @@ amd64(X86_64), i386
 sudo sed -i 's@//.*archive.ubuntu.com@//mirrors.jcut.edu.cn@g' /etc/apt/sources.list
 ```
 
-### 方法二
+#### 方法二
 
 直接编辑 `/etc/apt/sources.list` 文件（需要使用 `sudo`）。
-
 <ConfigGenerator promptString="请选择您的 Ubuntu 版本：" versionList={Object.keys(ubuntuVersionMap)} defaultVersion={defaultVersion} configGen={GenUbuntuConfig} language="bash" />
