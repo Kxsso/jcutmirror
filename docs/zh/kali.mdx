@@ -2,18 +2,48 @@
 mirrorId: kali
 ---
 
-### 手动替换
-编辑 `/etc/apt/sources.list` 文件，在文件最前面添加以下条目：
+## Kali 镜像使用帮助
 
-```properties
+### 地址
+
+[https://mirrors.jcut.edu.cn/kali/](https://mirrors.jcut.edu.cn/kali/)
+
+### 说明
+
+*Kali Linux* 软件源
+
+### 支持的系统架构
+
+amd64, armel, armhf, i386
+
+---
+
+### 使用说明
+
+#### 方法一
+
+编辑 `/etc/apt/sources.list` 文件, 在文件最前面添加以下条目：
+
+```shell
 deb https://mirrors.jcut.edu.cn/kali kali-rolling main non-free contrib
-#deb-src https://mirrors.jcut.edu.cn/kali kali-rolling main non-free contrib
+deb-src https://mirrors.jcut.edu.cn/kali kali-rolling main non-free contrib
 ```
 
-### sed 替换
+#### 方法二
+使用 sed 命令替换
 
-执行如下命令 sed 替换
-
-```bash
-sed -i "s@http://http.kali.org/kali@https://mirrors.jcut.edu.cn/kali@g" /etc/apt/sources.list
+```shell
+sudo sed -i "s@http://http.kali.org/kali@https://mirrors.jcut.edu.cn/kali@g" /etc/apt/sources.list
 ```
+
+### 注意
+
+> 更改完 `sources.list` 文件后请运行 `sudo apt-get update` 更新索引以生效。
+
+由于 Kali 仓库未使用 by-hash 机制，同步时的一致性无法保证。如果在同步时执行 `apt update`，可能会看到以下错误
+
+```text
+E: 无法下载 https://mirrors.jcut.edu.cn/kali/dists/kali-rolling/main/source/Sources.gz 文件尺寸不符(14593053 != 14592993)。您使用的镜像正在同步中？
+```
+
+如果出现以上错误，则需等待同步完成后再执行 `apt update`。
