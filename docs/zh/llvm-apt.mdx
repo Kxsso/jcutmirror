@@ -17,9 +17,9 @@ export const llvmVersionMap = {
 
 export const GetConfig = (version) => {
     var versionName = llvmVersionMap[version]
-    return `wget https://mirrors.zju.edu.cn/llvm-apt/llvm.sh
+    return `wget https://mirrors.jcut.edu.cn/llvm-apt/llvm.sh
 chmod +x llvm.sh
-./llvm.sh ${versionName} all -m https://mirrors.zju.edu.cn/llvm-apt`
+./llvm.sh ${versionName} all -m https://mirrors.jcut.edu.cn/llvm-apt`
 }
 
 使用下面的指令进行配置。

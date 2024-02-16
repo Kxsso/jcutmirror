@@ -13,9 +13,9 @@ mirrorId: msys2
 
 ```conf
 # x86_64
-https://mirrors.zju.edu.cn/msys2/distrib/x86_64/
+https://mirrors.jcut.edu.cn/msys2/distrib/x86_64/
 # i686
-https://mirrors.zju.edu.cn/msys2/distrib/i686/
+https://mirrors.jcut.edu.cn/msys2/distrib/i686/
 ```
 
 找到名为 `msys2-<架构>-<日期>.exe` 的文件（如 `msys2-x86_64-20141113.exe`），下载安装即可。
@@ -25,5 +25,5 @@ https://mirrors.zju.edu.cn/msys2/distrib/i686/
 直接运行
 
 ```bash
-sed -i "s#https\?://mirror.msys2.org/#https://mirrors.zju.edu.cn/msys2/#g" /etc/pacman.d/mirrorlist*
+sed -i "s#https\?://mirror.msys2.org/#https://mirrors.jcut.edu.cn/msys2/#g" /etc/pacman.d/mirrorlist*
 ```

@@ -7,19 +7,19 @@ mirrorId: CRAN
 在文末添加如下语句:
 
 ```bash
-options("repos" = c(CRAN="https://mirrors.zju.edu.cn/CRAN/"))
+options("repos" = c(CRAN="https://mirrors.jcut.edu.cn/CRAN/"))
 ```
 
 打开 R 即可使用该 CRAN 镜像源安装 R 软件包。
 
 ### Ubuntu 下添加 CRAN 镜像安装 R
 
-参考 [README 里的步骤](https://mirrors.zju.edu.cn/CRAN/bin/linux/ubuntu)，运行
+参考 [README 里的步骤](https://mirrors.jcut.edu.cn/CRAN/bin/linux/ubuntu)，运行
 
 ```bash
 sudo apt update -qq
 sudo apt install --no-install-recommends software-properties-common dirmngr
-wget -qO- https://mirrors.zju.edu.cn/misc/cran/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
-sudo add-apt-repository "deb https://mirrors.zju.edu.cn/CRAN/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+wget -qO- https://mirrors.jcut.edu.cn/misc/cran/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+sudo add-apt-repository "deb https://mirrors.jcut.edu.cn/CRAN/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
 ```
 

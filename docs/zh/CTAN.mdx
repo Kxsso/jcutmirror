@@ -5,7 +5,7 @@ mirrorId: CTAN
 CTAN (The Comprehensive TeX Archive Network) 是所有 TeX 排版系统相关材料的汇集地，收录了编译引擎、宏包及字体等的源代码与说明文档。目前，绝大多数 LaTeX 宏包会被上传至 CTAN 核心站点，随后同步到遍布全球的各个镜像。
 
 - CTAN 主页： https://www.ctan.org/
-- 浙江大学镜像： https://mirrors.zju.edu.cn/CTAN/
+- 浙江大学镜像： https://mirrors.jcut.edu.cn/CTAN/
 
 本文提供了 TeX Live 和 MiKTeX 两大主要发行版的镜像配置方法。
 
@@ -15,15 +15,15 @@ TeX Live 是目前使用最为广泛的 TeX 发行版，支持 Windows、Linux �
 
 #### 安装
 
-TeX Live 发行版的常见安装方法可以参考[此文档](https://mirrors.zju.edu.cn/CTAN/info/install-latex-guide-zh-cn/install-latex-guide-zh-cn.pdf)。
+TeX Live 发行版的常见安装方法可以参考[此文档](https://mirrors.jcut.edu.cn/CTAN/info/install-latex-guide-zh-cn/install-latex-guide-zh-cn.pdf)。
 
 除每年更新的完整版 ISO 镜像以外， CTAN 镜像中也包含在线安装器。这种方法可以使安装的所有宏包均为最新版本，但受网络连接状况影响较大。操作方法为（*很可能需要管理员权限*）：
 
-1. 下载 [`install-tl.zip`](https://mirrors.zju.edu.cn/CTAN/systems/texlive/tlnet/install-tl.zip) 并解压缩
+1. 下载 [`install-tl.zip`](https://mirrors.jcut.edu.cn/CTAN/systems/texlive/tlnet/install-tl.zip) 并解压缩
 2. Windows 下双击运行其中的 `install-tl.bat` 。如果有图形化界面，可以在进入安装器前的右下角按钮指定使用镜像源。
 Linux 下使用如下命令：
 ```bash
-perl install-tl --repository https://mirrors.zju.edu.cn/CTAN/systems/texlive/tlnet
+perl install-tl --repository https://mirrors.jcut.edu.cn/CTAN/systems/texlive/tlnet
 ```
 
 #### 切换镜像
@@ -33,7 +33,7 @@ TeX Live 使用的 CTAN 镜像源可以从内置的包管理器 `tlmgr` 更改�
 在命令行中执行
 
 ```bash
-tlmgr option repository https://mirrors.zju.edu.cn/CTAN/systems/texlive/tlnet
+tlmgr option repository https://mirrors.jcut.edu.cn/CTAN/systems/texlive/tlnet
 ```
 
 即可永久更改镜像源。
@@ -41,7 +41,7 @@ tlmgr option repository https://mirrors.zju.edu.cn/CTAN/systems/texlive/tlnet
 如果只需要临时切换，可以用如下命令：
 
 ```bash
-tlmgr update --all --repository https://mirrors.zju.edu.cn/CTAN/systems/texlive/tlnet
+tlmgr update --all --repository https://mirrors.jcut.edu.cn/CTAN/systems/texlive/tlnet
 ```
 
 其中的 ```update --all``` 指令可根据需要修改。
@@ -59,5 +59,5 @@ MiKTeX 仅提供 Windows 和 macOS 的独立安装包，前往 TeX 排版系统�
 MiKTeX 使用的 CTAN 镜像源可以从内置的 MiKTeX Console 图形化应用程序进行切换，也可以使用如下命令：
 
 ```bash
-mpm --set-repository=https://mirrors.zju.edu.cn/CTAN/systems/win32/miktex/tm/packages/
+mpm --set-repository=https://mirrors.jcut.edu.cn/CTAN/systems/win32/miktex/tm/packages/
 ```

@@ -17,7 +17,7 @@ yum install epel-release
 
 修改`/etc/yum.repos.d/epel.repo`，将`mirrorlist`和`metalink`开头的行注释掉。
 
-接下来，取消注释这个文件里`baseurl`开头的行，并将其中的`http://download.fedoraproject.org/pub/epel`替换成`https://mirrors.zju.edu.cn/epel`。
+接下来，取消注释这个文件里`baseurl`开头的行，并将其中的`http://download.fedoraproject.org/pub/epel`替换成`https://mirrors.jcut.edu.cn/epel`。
 
 可以用如下命令自动替换：（来自 https://github.com/tuna/issues/issues/687 ） 
 
@@ -25,8 +25,8 @@ yum install epel-release
 ```shell
 sed -e 's!^metalink=!#metalink=!g' \
     -e 's!^#baseurl=!baseurl=!g' \
-    -e 's!http://download\.fedoraproject\.org/pub/epel!https://mirrors.zju.edu.cn/epel!g' \
-    -e 's!http://download\.example/pub/epel!https://mirrors.zju.edu.cn/epel!g' \
+    -e 's!http://download\.fedoraproject\.org/pub/epel!https://mirrors.jcut.edu.cn/epel!g' \
+    -e 's!http://download\.example/pub/epel!https://mirrors.jcut.edu.cn/epel!g' \
     -i /etc/yum.repos.d/epel*.repo
 ```
 
@@ -37,7 +37,7 @@ sed -e 's!^metalink=!#metalink=!g' \
 ```ini
 [epel]
 name=Extra Packages for Enterprise Linux 7 - $basearch
-baseurl=https://mirrors.zju.edu.cn/epel/7/$basearch
+baseurl=https://mirrors.jcut.edu.cn/epel/7/$basearch
 #mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=$basearch
 failovermethod=priority
 enabled=1
@@ -46,7 +46,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
 
 [epel-debuginfo]
 name=Extra Packages for Enterprise Linux 7 - $basearch - Debug
-baseurl=https://mirrors.zju.edu.cn/epel/7/$basearch/debug
+baseurl=https://mirrors.jcut.edu.cn/epel/7/$basearch/debug
 #mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-debug-7&arch=$basearch
 failovermethod=priority
 enabled=0
@@ -55,7 +55,7 @@ gpgcheck=1
 
 [epel-source]
 name=Extra Packages for Enterprise Linux 7 - $basearch - Source
-baseurl=https://mirrors.zju.edu.cn/epel/7/SRPMS
+baseurl=https://mirrors.jcut.edu.cn/epel/7/SRPMS
 #mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-source-7&arch=$basearch
 failovermethod=priority
 enabled=0
