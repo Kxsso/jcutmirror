@@ -59,14 +59,80 @@ deb https://mirrors.jcut.edu.cn/debian-security ${version}-security main contrib
 # deb-src https://mirrors.jcut.edu.cn/debian-security ${version}-security main contrib non-free non-free-firmware`
 }
 
-Debian 的软件源配置文件是 `/etc/apt/sources.list`。将系统自带的该文件做个备份，将该文件替换为下面内容，即可使用我们的软件源镜像。
+## Debian 镜像使用帮助
+
+### 地址
+
+[https://mirrors.jcut.edu.cn/debian/](https://mirrors.jcut.edu.cn/debian/)
+
+### 说明
+
+*Debian* 软件源
+
+### 收录架构
+
+amd64(X86_64), i386, arm
+
+### 收录版本
+Debian Old Stable, Stable, Testing, Unstable(sid)
+
+当前 Stable 为 Debian 12，代号为 Bookworm
+
+---
+
+### 使用说明
+
+#### 方法一
+
+一般情况下，将 `/etc/apt/sources.list` 文件中 *Debian* 默认的源地址 `http://deb.debian.org/` 替换为 `http://mirrors.jcut.edu.cn` 即可。
+
+可以使用如下命令：
+
+```shell
+sudo sed -i 's/deb.debian.org/mirrors.jcut.edu.cn/g' /etc/apt/sources.list
+```
+
+Debian 12 (bookworm) 的**容器**镜像开始使用 DEB822 格式，而非上文使用的传统的 One-Line-Style 格式。 对应需要修改的文件为 `/etc/apt/sources.list.d/debian.sources`。同样可以使用如下命令：
+
+```shell
+sudo sed -i 's/deb.debian.org/mirrors.jcut.edu.cn/g' /etc/apt/sources.list.d/debian.sources
+```
+
+#### 方法二
+
+直接编辑 /etc/apt/sources.list 文件（需要使用 sudo）。以下是参考配置内容：
+<ConfigGenerator promptString="请选择您的 Debian 版本：" versionList={debianVersions} configGen={GenDebianConfig} language="bash" />
+
+以下是在 Debian 12 **容器镜像**中同时修改了 Debian 与 Debian Security 源的情况下的参考配置内容：
+
+```
+Types: deb
+URIs: http://mirrors.jcut.edu.cn/debian
+Suites: bookworm bookworm-updates
+Components: main
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
+Types: deb
+URIs: http://mirrors.jcut.edu.cn/debian-security
+Suites: bookworm-security
+Components: main
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+```
+
+#### 注意
+
+更改完 `sources.list` 文件后请运行 `sudo apt-get update` 更新索引以生效。
+
+在 apt 2.1.9 及以后的版本中，apt 的 HTTP Pipelining 特性与 Nginx 服务器疑似存在一定的不兼容问题，可能导致高带宽从镜像站下载大量软件包 （例如系统升级）时出现偶发的 Connection reset by peer 错误 （详见 Debian bug #973581）。
+
+目前，用户可以通过关闭 HTTP Pipelining 特性解决此问题。 如果需要关闭，可以在使用 `apt` 命令时加上 `-o Acquire::http::Pipeline-Depth=0` 参数， 或使用以下命令将相关设置加入 apt 系统配置中：
+
+```bash
+echo "Acquire::http::Pipeline-Depth \"0\";" > /etc/apt/apt.conf.d/99nopipelining
+```
 
 如果遇到无法拉取 https 源的情况，请先使用 http 源并安装: 
 
 ```bash
 sudo apt install apt-transport-https ca-certificates
 ```
-
-再使用我们的软件源镜像。
-
-<ConfigGenerator promptString="请选择您的 Debian 版本：" versionList={debianVersions} configGen={GenDebianConfig} language="bash" />
