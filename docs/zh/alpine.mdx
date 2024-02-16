@@ -2,10 +2,44 @@
 mirrorId: alpine
 ---
 
-Alpine Linux 是一个面向安全、轻量级的，基于 musl libc 与 busybox 项目的 Linux 发行版。
+## Alpine 镜像使用帮助
 
-在终端输入以下命令以替换浙大镜像源：
+### 地址
 
-```bash
+https://mirrors.jcut.edu.cn/alpine/
+
+### 说明
+
+Alpine Linux 软件源
+
+### 收录架构
+
+x86_64
+
+### 使用说明
+
+一般情况下，将 `/etc/apk/repositories` 文件中 Alpine 默认的源地址 `http://dl-cdn.alpinelinux.org/` 替换为 `http://mirrors.jcut.edu.cn/` 即可。
+
+可以使用如下命令：
+
+```shell
 sed -i 's/dl-cdn.alpinelinux.org/mirrors.jcut.edu.cn/g' /etc/apk/repositories
 ```
+
+也可以直接编辑 `/etc/apk/repositories` 文件。以下是 v3.18 版本的参考配置：
+
+```text
+https://mirrors.jcut.edu.cn/alpine/v3.18/main
+https://mirrors.jcut.edu.cn/alpine/v3.18/community
+```
+
+也可以使用 `latest-stable` 指向最新的稳定版本：
+
+```text
+https://mirrors.jcut.edu.cn/alpine/latest-stable/main
+https://mirrors.jcut.edu.cn/alpine/latest-stable/community
+```
+
+### 注意
+
+更改完 `/etc/apk/repositories` 文件后请运行 `apk update` 更新索引以生效。
