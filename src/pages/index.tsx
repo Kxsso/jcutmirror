@@ -203,7 +203,7 @@ const Index = ({ data }: { data: Data }) => {
                     color="primary"
                     sx={{ fontSize: { xs: 21, sm: 28 } }}
                   >
-                    <Trans>荆楚理工学院开源软件镜像站</Trans>
+                    <Trans>荆楚理工学院开源镜像站</Trans>
                   </Typography>
                   <Typography
                     variant="subtitle1"

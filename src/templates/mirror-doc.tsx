@@ -72,7 +72,7 @@ const MirrorDoc = ({ data, children }: { data: Data }) => {
         justifyContent: 'space-between',
       }}
     >
-      <Seo title={`${name} | ZJU Mirror`} />
+      <Seo title={`${name} | JCUT Mirror`} />
       <Box>
         <Box sx={{ px: { xs: 4, sm: 8 }, py: 4 }} position="relative">
           <Grid
