@@ -1,7 +1,7 @@
 {
-  "name": "zju-mirror",
+  "name": "jcutmirror",
   "private": false,
-  "description": "ZJU open source mirror site",
+  "description": "JCUT open source mirror site",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -21,8 +21,8 @@
     "@emotion/styled": "^11.8.1",
     "@fontsource/poppins": "^4.5.10",
     "@formatjs/intl-displaynames": "^5.4.3",
-    "@iconify/icons-logos": "^1.2.6",
-    "@iconify/icons-simple-icons": "^1.2.44",
+    "@iconify/icons-logos": "^1.2.36",
+    "@iconify/icons-simple-icons": "^1.2.74",
     "@iconify/icons-mdi": "^1.2.44",
     "@iconify/icons-file-icons": "^1.2.3",
     "@iconify/react": "^3.2.1",
@@ -81,9 +81,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ZJUSCT/mirror-front"
+    "url": "https://github.com/JCIOTeam/jcutmirror"
   },
   "bugs": {
-    "url": "https://github.com/ZJUSCT/mirror-front/issues"
+    "url": "https://github.com/JCIOTeam/issues"
   }
 }
