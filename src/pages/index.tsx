@@ -14,7 +14,7 @@ import frequentlyUsedMirror from '../utils/frequently-used-mirror-list';
 import { getUrl } from '../utils/url';
 import { readCache, writeCache } from '../utils/cache';
 import NameIconButton from '../components/name-icon-button';
-import ZjuFalconIcon from '../../resource/icons/zju-falcon.svg';
+import JcutFalconIcon from '../../resource/icons/favicon.svg';
 
 interface Data {
   mirrorDocs: {
@@ -164,7 +164,7 @@ const Index = ({ data }: { data: Data }) => {
                   maxWidth: { xs: 54, sm: 72 },
                 }}
               >
-                <ZjuFalconIcon />
+                <JcutFalconIcon />
               </Box>
               <Box sx={{ width: '100%', ml: 2 }}>
                 <Grid
