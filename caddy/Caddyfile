@@ -1,9 +1,7 @@
-:8080 {
-	handle /error/* {
-		file_server {
-			root /usr/share/nginx/html/err/
-		}
-	}
+{
+	auto_https disable_redirects
+}
+(mirrorsite) {
 	handle /rocky/* {
 		file_server {
 			root /mirrors/
@@ -144,10 +142,24 @@
 		}
 	}
 	handle /jobs {
-		reverse_proxy 127.0.0.1:12345
+		reverse_proxy 127.0.0.1:12345 {
+			header_up Host {http.reverse_proxy.upstream.hostport} 
+			header_down Access-Control-Allow-Headers * 
+			header_down Access-Control-Allow-Origin *
+		}
 	}
 	handle /api/* {
-		reverse_proxy 127.0.0.1:7000
+		reverse_proxy 127.0.0.1:7000 {
+			header_up Host {http.reverse_proxy.upstream.hostport} 
+			header_down Access-Control-Allow-Headers * 
+			header_down Access-Control-Allow-Origin *
+		}
+	}
+	handle_errors {
+		rewrite * /{err.status_code}.html
+		file_server {
+			root /usr/share/nginx/html/err/
+		}
 	}
 	file_server {
 		root /home/mirror/jcutmirror/caddy/
@@ -156,4 +168,11 @@
 	log {
 		output file /var/log/caddy/access.log
 	}
+}
+http://mirrors.jcut.edu.cn {
+	import mirrorsite
+}
+https://mirrors.jcut.edu.cn {
+	import mirrorsite
+	tls /etc/ssl/jcut.edu.cn.crt /etc/ssl/jcut.edu.cn.key
 }
