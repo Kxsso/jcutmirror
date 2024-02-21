@@ -11,7 +11,7 @@ export interface FileProps {
 
 export default ({ name, url }: FileProps) => {
   return (
-    <Card className="zju-mirror-card" style={{ height: '100%' }}>
+    <Card className="jcut-mirror-card" style={{ height: '100%' }}>
       <CardActionArea to={url} sx={{ p: 2 }}>
         <Grid
           container
