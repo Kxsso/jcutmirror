@@ -17,7 +17,7 @@ export interface FrequentlyUsedMirrorCardProps {
 
 export default ({ name, icon, desc, url }: FrequentlyUsedMirrorCardProps) => {
   return (
-    <Card className="zju-mirror-card" style={{ height: '100%' }}>
+    <Card className="jcut-mirror-card" style={{ height: '100%' }}>
       <CardActionArea to={url} style={{ height: '100%' }}>
         <Grid
           container

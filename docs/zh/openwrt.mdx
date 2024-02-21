@@ -11,7 +11,7 @@ OpenWRT（曾用名 LEDE）是一款广泛应用于路由器的嵌入式操作�
 登录到路由器，并编辑 `/etc/opkg/distfeeds.conf` 文件，将其中的 `http://downloads.openwrt.org` 替换为
 
 ```plaintext
-https://mirrors.zju.edu.cn/openwrt
+https://mirrors.jcut.edu.cn/openwrt
 ```
 
 即可。
@@ -21,7 +21,7 @@ https://mirrors.zju.edu.cn/openwrt
 执行如下命令自动替换
 
 ```shell
-sed -i 's_https\?://downloads.openwrt.org_https://mirrors.zju.edu.cn/openwrt_' /etc/opkg/distfeeds.conf
+sed -i 's_https\?://downloads.openwrt.org_https://mirrors.jcut.edu.cn/openwrt_' /etc/opkg/distfeeds.conf
 ```
 
 

@@ -8,6 +8,8 @@ export default function configTheme(mode: PaletteMode): ThemeOptions {
         ? {
             primary: {
               main: '#21a675',
+              light: '#4db790',
+              dark: '#177451',
             },
             neutral: {
               main: '#f2f7f9',
@@ -32,6 +34,8 @@ export default function configTheme(mode: PaletteMode): ThemeOptions {
         : {
             primary: {
               main: '#39DE96',
+              light: '#60e4ab',
+              dark: '#279b69',
             },
             neutral: {
               main: '#070707',

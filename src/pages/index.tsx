@@ -14,7 +14,7 @@ import frequentlyUsedMirror from '../utils/frequently-used-mirror-list';
 import { getUrl } from '../utils/url';
 import { readCache, writeCache } from '../utils/cache';
 import NameIconButton from '../components/name-icon-button';
-import ZjuFalconIcon from '../../resource/icons/zju-falcon.svg';
+import JcutFalconIcon from '../../resource/icons/favicon.svg';
 
 interface Data {
   mirrorDocs: {
@@ -164,7 +164,7 @@ const Index = ({ data }: { data: Data }) => {
                   maxWidth: { xs: 54, sm: 72 },
                 }}
               >
-                <ZjuFalconIcon />
+                <JcutFalconIcon />
               </Box>
               <Box sx={{ width: '100%', ml: 2 }}>
                 <Grid
@@ -203,7 +203,7 @@ const Index = ({ data }: { data: Data }) => {
                     color="primary"
                     sx={{ fontSize: { xs: 21, sm: 28 } }}
                   >
-                    <Trans>荆楚理工学院开源软件镜像站</Trans>
+                    <Trans>荆楚理工学院开源镜像站</Trans>
                   </Typography>
                   <Typography
                     variant="subtitle1"

@@ -2,43 +2,83 @@
 mirrorId: epel
 ---
 
+## EPEL 源使用帮助
 
-EPEL(Extra Packages for Enterprise Linux) 是由 Fedora Special Interest Group 维护的 Enterprise Linux（RHEL、CentOS）中经
-常用到的包。
+### 地址
 
+[https://mirrors.jcut.edu.cn/epel/](https://mirrors.jcut.edu.cn/epel/)
 
-下面以 CentOS 7 为例讲解如何使用本镜像站的 epel 镜像。CentOS 8 同样可用该方法。
+### 说明
 
-首先从 CentOS Extras 这个源里安装 epel-release：
+EPEL (Extra Packages for Enterprise Linux) 是由 Fedora Special Interest Group 为企业 Linux 创建、维护和管理的一个高质量附加包集合，适用于但不仅限于 Red Hat Enterprise Linux (RHEL), CentOS, Scientific Linux (SL), Oracle Linux (OL)。
+
+### 收录架构
+
+官方支持的所有架构
+
+### 收录版本
+
+官方支持的所有版本
+
+---
+
+### 使用说明
+
+执行以下命令：
 
 ```shell
-yum install epel-release
+sudo yum install -y epel-release
+sudo sed -e 's|^metalink=|#metalink=|g' \
+         -e 's|^#baseurl=https\?://download.fedoraproject.org/pub/epel/|baseurl=https://mirrors.jcut.edu.cn/epel/|g' \
+         -e 's|^#baseurl=https\?://download.example/pub/epel/|baseurl=https://mirrors.jcut.edu.cn/epel/|g' \
+         -i.bak \
+         /etc/yum.repos.d/epel.repo
 ```
 
-修改`/etc/yum.repos.d/epel.repo`，将`mirrorlist`和`metalink`开头的行注释掉。
+以下是替换之后的 /etc/yum.repos.d/epel.repo 文件：
 
-接下来，取消注释这个文件里`baseurl`开头的行，并将其中的`http://download.fedoraproject.org/pub/epel`替换成`https://mirrors.zju.edu.cn/epel`。
+CentOS 8：
 
-可以用如下命令自动替换：（来自 https://github.com/tuna/issues/issues/687 ） 
+```text
+[epel]
+name=Extra Packages for Enterprise Linux $releasever - $basearch
+# It is much more secure to use the metalink, but if you wish to use a local mirror
+# place it's address here.
+baseurl=https://mirrors.jcut.edu.cn/epel/$releasever/Everything/$basearch
+#metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-$releasever&arch=$basearch&infra=$infra&content=$contentdir
+enabled=1
+gpgcheck=1
+countme=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8
 
+[epel-debuginfo]
+name=Extra Packages for Enterprise Linux $releasever - $basearch - Debug
+# It is much more secure to use the metalink, but if you wish to use a local mirror
+# place it's address here.
+baseurl=https://mirrors.jcut.edu.cn/epel/$releasever/Everything/$basearch/debug
+#metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-debug-$releasever&arch=$basearch&infra=$infra&content=$contentdir
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8
+gpgcheck=1
 
-```shell
-sed -e 's!^metalink=!#metalink=!g' \
-    -e 's!^#baseurl=!baseurl=!g' \
-    -e 's!http://download\.fedoraproject\.org/pub/epel!https://mirrors.zju.edu.cn/epel!g' \
-    -e 's!http://download\.example/pub/epel!https://mirrors.zju.edu.cn/epel!g' \
-    -i /etc/yum.repos.d/epel*.repo
+[epel-source]
+name=Extra Packages for Enterprise Linux $releasever - $basearch - Source
+# It is much more secure to use the metalink, but if you wish to use a local mirror
+# place it's address here.
+baseurl=https://mirrors.jcut.edu.cn/epel/$releasever/Everything/SRPMS
+#metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-source-$releasever&arch=$basearch&infra=$infra&content=$contentdir
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8
+gpgcheck=1
 ```
 
+CentOS 7：
 
-修改结果如下：（仅供参考，不同版本可能不同）
-
-
-```ini
+```text
 [epel]
 name=Extra Packages for Enterprise Linux 7 - $basearch
-baseurl=https://mirrors.zju.edu.cn/epel/7/$basearch
-#mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=$basearch
+baseurl=https://mirrors.jcut.edu.cn/epel/7/$basearch
+#metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=$basearch
 failovermethod=priority
 enabled=1
 gpgcheck=1
@@ -46,8 +86,8 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
 
 [epel-debuginfo]
 name=Extra Packages for Enterprise Linux 7 - $basearch - Debug
-baseurl=https://mirrors.zju.edu.cn/epel/7/$basearch/debug
-#mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-debug-7&arch=$basearch
+baseurl=https://mirrors.jcut.edu.cn/epel/7/$basearch/debug
+#metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-debug-7&arch=$basearch
 failovermethod=priority
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
@@ -55,13 +95,10 @@ gpgcheck=1
 
 [epel-source]
 name=Extra Packages for Enterprise Linux 7 - $basearch - Source
-baseurl=https://mirrors.zju.edu.cn/epel/7/SRPMS
-#mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-source-7&arch=$basearch
+baseurl=https://mirrors.jcut.edu.cn/epel/7/SRPMS
+#metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-source-7&arch=$basearch
 failovermethod=priority
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
 gpgcheck=1
 ```
-
-
-运行 `yum update` 测试一下吧。

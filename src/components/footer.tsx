@@ -54,7 +54,7 @@ export default () => {
                 </Typography>
                 <Typography gutterBottom variant="body2" color="text.secondary">
                   <Link
-                    href="https://github.com/ZJUSCT/mirror-issues"
+                    href="https://github.com/JCIOTeam/ISSUE"
                     color="text.secondary"
                     underline="hover"
                   >
@@ -85,7 +85,7 @@ export default () => {
                   </Typography>
                   <Typography gutterBottom variant="body2">
                     <Link
-                      href="mailto:mirrors@zju.edu.cn"
+                      href="mailto:stucloud@jcut.edu.cn"
                       color="text.secondary"
                       underline="hover"
                     >
@@ -94,7 +94,7 @@ export default () => {
                   </Typography>
                   <Typography gutterBottom variant="body2">
                     <Link
-                      href="https://github.com/zjusct"
+                      href="https://github.com/JCIOTeam"
                       color="text.secondary"
                       underline="hover"
                     >
@@ -103,7 +103,7 @@ export default () => {
                   </Typography>
                   <Typography gutterBottom variant="body2">
                     <Link
-                      href="https://www.zjusct.io"
+                      href="https://www.jciot.cc"
                       color="text.secondary"
                       underline="hover"
                     >
@@ -122,7 +122,7 @@ export default () => {
                   </Typography>
                   <Typography gutterBottom variant="body2">
                     <Link
-                      href="http://zuits.zju.edu.cn"
+                      href="https://net.jcut.edu.cn/"
                       color="text.secondary"
                       underline="hover"
                     >
@@ -155,13 +155,13 @@ export default () => {
         <Grid item>
           <Grid container direction="row" columnSpacing={4} rowSpacing={2} alignItems="center">
             <Grid item>
-              <Link href="https://zuits.zju.edu.cn/">
+              <Link href="https://net.jcut.edu.cn/">
                 <JCUT width="16rem"/>
               </Link>
             </Grid>
             <Grid item>
-              <Link href="https://www.zjusct.io">
-                <JCUTIcon width="12rem"/>
+              <Link href="https://www.jciot.cc">
+                <JCIOT width="14rem"/>
               </Link>
             </Grid>
           </Grid>

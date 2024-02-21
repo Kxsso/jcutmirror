@@ -8,7 +8,7 @@ mirrorId: almalinux
 
 ```bash
 sed -e 's|^mirrorlist=|#mirrorlist=|g' \
-    -e 's|^#\s*baseurl=https://repo.almalinux.org/almalinux|baseurl=https://mirrors.zju.edu.cn/almalinux|g' \
+    -e 's|^#\s*baseurl=https://repo.almalinux.org/almalinux|baseurl=https://mirrors.jcut.edu.cn/almalinux|g' \
     -i.bak \
     /etc/yum.repos.d/almalinux-*.repo
 ```

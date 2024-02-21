@@ -2,34 +2,195 @@
 mirrorId: centos
 ---
 
-在使用 CentOS 镜像前，请检查您所应该使用的对应软件源：
+## CentOS 镜像使用帮助
 
-| CentOS 版本 | 架构 | 对应软件源 |
-|---|---|---|
-| 6 及之前 | - | centos-vault |
-| 7 | x86_64 | centos |
-| 7 | 其他 | centos-altarch |
-| 8 ~ 8.1 | x86_64 | centos |
-| 8 ~ 8.1 | 其他 | centos-altarch |
-| 8.1 ~ 8.5 | - | centos-vault |
-| 8 Stream | - | centos |
-| 9 Stream | - | centos-stream |
+### 地址
 
+[https://mirrors.jcut.edu.cn/centos/](https://mirrors.jcut.edu.cn/centos/)
 
-使用以下命令切换源并备份原始配置：
+### 说明
+
+CentOS 软件源
+
+### 收录架构
+x86_64, aarch64, ppc64le
+
+### 收录版本
+7, 8 Stream
+
+#### 注意
+
+> CentOS 8（非 Stream 版本）已被官方移除出该仓库。
+
+---
+
+### 使用说明
+
+对于 CentOS 8 Stream，使用以下命令替换默认的配置
+
+```shell
+sudo sed -e 's|^mirrorlist=|#mirrorlist=|g' \
+         -e 's|^#baseurl=http://mirror.centos.org/$contentdir|baseurl=https://mirrors.jcut.edu.cn/centos|g' \
+         -i.bak \
+         /etc/yum.repos.d/CentOS-Stream-AppStream.repo \
+         /etc/yum.repos.d/CentOS-Stream-BaseOS.repo \
+         /etc/yum.repos.d/CentOS-Stream-Extras.repo \
+         /etc/yum.repos.d/CentOS-Stream-PowerTools.repo
+```
+
+对于 CentOS 7，使用以下命令替换默认配置
 
 ```bash
 sudo sed -e 's|^mirrorlist=|#mirrorlist=|g' \
-         -e 's|^#baseurl=http://mirror.centos.org|baseurl=https://mirrors.zju.edu.cn|g' \
+         -e 's|^#baseurl=http://mirror.centos.org/centos|baseurl=https://mirrors.jcut.edu.cn/centos|g' \
          -i.bak \
-         /etc/yum.repos.d/CentOS-*.repo
+         /etc/yum.repos.d/CentOS-Base.repo
 ```
-注意其中的*通配符，如果只需要替换一些文件中的源，请自行增删。
 
-如果需要启用其中一些 repo，需要将其中的 `enabled=0` 改为 `enabled=1`。
+以上命令只替换了默认启用的仓库。替换之后请运行 `yum makecache` 更新缓存。
 
-然后，更新软件包缓存：
+以下是替换之后的文件：
 
-```bash
-sudo yum makecache
+警告
+
+以下给出的 CentOS-Stream-PowerTools.repo 设置了默认为停用状态。如需启用，请将 `enabled=0` 改为 `enabled=1`。
+
+CentOS 8 Stream：
+
+`/etc/yum.repos.d/CentOS-Stream-BaseOS.repo` 文件：
+
+```shell
+# CentOS-Stream-BaseOS.repo
+#
+# The mirrorlist system uses the connecting IP address of the client and the
+# update status of each mirror to pick current mirrors that are geographically
+# close to the client.  You should use this for CentOS updates unless you are
+# manually picking other mirrors.
+#
+# If the mirrorlist does not work for you, you can try the commented out
+# baseurl line instead.
+
+[baseos]
+name=CentOS Stream $releasever - BaseOS
+#mirrorlist=http://mirrorlist.centos.org/?release=$stream&arch=$basearch&repo=BaseOS&infra=$infra
+baseurl=https://mirrors.jcut.edu.cn/centos/$stream/BaseOS/$basearch/os/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+```
+
+`/etc/yum.repos.d/CentOS-Stream-Extras.repo` 文件：
+
+```shell
+# CentOS-Stream-Extras.repo
+#
+# The mirrorlist system uses the connecting IP address of the client and the
+# update status of each mirror to pick current mirrors that are geographically
+# close to the client.  You should use this for CentOS updates unless you are
+# manually picking other mirrors.
+#
+# If the mirrorlist does not work for you, you can try the commented out
+# baseurl line instead.
+
+[extras]
+name=CentOS Stream $releasever - Extras
+#mirrorlist=http://mirrorlist.centos.org/?release=$stream&arch=$basearch&repo=extras&infra=$infra
+baseurl=https://mirrors.jcut.edu.cn/centos/$stream/extras/$basearch/os/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+```
+
+`/etc/yum.repos.d/CentOS-Stream-AppStream.repo` 文件：
+
+```shell
+# CentOS-Stream-AppStream.repo
+#
+# The mirrorlist system uses the connecting IP address of the client and the
+# update status of each mirror to pick current mirrors that are geographically
+# close to the client.  You should use this for CentOS updates unless you are
+# manually picking other mirrors.
+#
+# If the mirrorlist does not work for you, you can try the commented out
+# baseurl line instead.
+
+[appstream]
+name=CentOS Stream $releasever - AppStream
+#mirrorlist=http://mirrorlist.centos.org/?release=$stream&arch=$basearch&repo=AppStream&infra=$infra
+baseurl=https://mirrors.jcut.edu.cn/centos/$stream/AppStream/$basearch/os/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+```
+
+`/etc/yum.repos.d/CentOS-Stream-PowerTools.repo` 文件：
+
+```shell
+# CentOS-Stream-PowerTools.repo
+#
+# The mirrorlist system uses the connecting IP address of the client and the
+# update status of each mirror to pick current mirrors that are geographically
+# close to the client.  You should use this for CentOS updates unless you are
+# manually picking other mirrors.
+#
+# If the mirrorlist does not work for you, you can try the commented out
+# baseurl line instead.
+
+[powertools]
+name=CentOS Stream $releasever - PowerTools
+#mirrorlist=http://mirrorlist.centos.org/?release=$stream&arch=$basearch&repo=PowerTools&infra=$infra
+baseurl=https://mirrors.jcut.edu.cn/centos/$stream/PowerTools/$basearch/os/
+gpgcheck=1
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+```
+
+CentOS 7：
+
+`/etc/yum.repos.d/CentOS-Base.repo` 文件：
+
+```shell
+# CentOS-Base.repo
+#
+# The mirror system uses the connecting IP address of the client and the
+# update status of each mirror to pick mirrors that are updated to and
+# geographically close to the client.  You should use this for CentOS updates
+# unless you are manually picking other mirrors.
+#
+# If the mirrorlist= does not work for you, as a fall back you can try the
+# remarked out baseurl= line instead.
+#
+#
+
+[base]
+name=CentOS-$releasever - Base
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
+baseurl=https://mirrors.jcut.edu.cn/centos/$releasever/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+#released updates
+[updates]
+name=CentOS-$releasever - Updates
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates&infra=$infra
+baseurl=https://mirrors.jcut.edu.cn/centos/$releasever/updates/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+#additional packages that may be useful
+[extras]
+name=CentOS-$releasever - Extras
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras&infra=$infra
+baseurl=https://mirrors.jcut.edu.cn/centos/$releasever/extras/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+#additional packages that extend functionality of existing packages
+[centosplus]
+name=CentOS-$releasever - Plus
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus&infra=$infra
+baseurl=https://mirrors.jcut.edu.cn/centos/$releasever/centosplus/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 ```

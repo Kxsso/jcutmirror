@@ -1,6 +1,178 @@
-localhost:50000
-
-file_server
-reverse_proxy /api/* https://mirror.zju.edu.cn {
-	header_up Host {upstream_hostport}
+{
+	auto_https disable_redirects
+}
+(mirrorsite) {
+	handle /rocky/* {
+		file_server {
+			root /mirrors/
+			browse
+		}
+	}
+	handle /centos/* {
+		file_server {
+			root /mirrors/
+			browse
+		}
+	}
+	handle /epel/* {
+		file_server {
+			root /mirrors/
+			browse
+		}
+	}
+	handle /archlinux/* {
+		file_server {
+			root /mirrors/
+			browse
+		}
+	}
+	handle /archlinuxcn/* {
+		file_server {
+			root /mirrors/
+			browse
+		}
+	}
+	handle /kali/* {
+		file_server {
+			root /mirrors/
+			browse
+		}
+	}
+	handle /lyx/* {
+		file_server {
+			root /mirrors/
+			browse
+		}
+	}
+	handle /apache/* {
+		file_server {
+			root /mirrors1/
+			browse
+		}
+	}
+	handle /kali-images/* {
+		file_server {
+			root /mirrors1/
+			browse
+		}
+	}
+	handle /debian/* {
+		file_server {
+			root /mirrors1/
+			browse
+		}
+	}
+	handle /debian-security/* {
+		file_server {
+			root /mirrors1/
+			browse
+		}
+	}
+	handle /debian-cd/* {
+		file_server {
+			root /mirrors1/
+			browse
+		}
+	}
+	handle /ubuntu/* {
+		file_server {
+			root /mirrors1/
+			browse
+		}
+	}
+	handle /ubuntu-releases/* {
+		file_server {
+			root /mirrors1/
+			browse
+		}
+	}
+	handle /centos-vault/* {
+		file_server {
+			root /mirrors1/
+			browse
+		}
+	}
+	handle /openjdk/* {
+		file_server {
+			root /mirrors1/
+			browse
+		}
+	}
+	handle /Adoptium/* {
+		file_server {
+			root /mirrors1/
+			browse
+		}
+	}
+	handle /alpine/* {
+		file_server {
+			root /mirrors1/
+			browse
+		}
+	}
+	handle /manjaro/* {
+		file_server {
+			root /mirrors1/
+			browse
+		}
+	}
+	handle /GNU/* {
+		file_server {
+			root /mirrors1/
+			browse
+		}
+	}
+	handle /Adoptium/* {
+		file_server {
+			root /mirrors1/
+			browse
+		}
+	}
+	handle /nodejs-release/* {
+		file_server {
+			root /mirrors1/
+			browse
+		}
+	}
+	handle /CTAN/* {
+		file_server {
+			root /mirrors1/
+			index index.html
+			browse
+		}
+	}
+	handle /jobs {
+		reverse_proxy 127.0.0.1:12345 {
+			header_up Host {http.reverse_proxy.upstream.hostport} 
+			header_down Access-Control-Allow-Headers * 
+			header_down Access-Control-Allow-Origin *
+		}
+	}
+	handle /api/* {
+		reverse_proxy 127.0.0.1:7000 {
+			header_up Host {http.reverse_proxy.upstream.hostport} 
+			header_down Access-Control-Allow-Headers * 
+			header_down Access-Control-Allow-Origin *
+		}
+	}
+	handle_errors {
+		rewrite * /{err.status_code}.html
+		file_server {
+			root /usr/share/nginx/html/err/
+		}
+	}
+	file_server {
+		root /home/mirror/jcutmirror/caddy/
+		index index.html
+	}
+	log {
+		output file /var/log/caddy/access.log
+	}
+}
+http://mirrors.jcut.edu.cn {
+	import mirrorsite
+}
+https://mirrors.jcut.edu.cn {
+	import mirrorsite
+	tls /etc/ssl/jcut.edu.cn.crt /etc/ssl/jcut.edu.cn.key
 }

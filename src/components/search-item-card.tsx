@@ -15,7 +15,7 @@ const SearchItemCard = (props: { queryItem: Mirror }) => {
   const [prefs, _] = usePrefs();
 
   return (
-    <Card className="zju-mirror-card" style={{ height: '100%' }}>
+    <Card className="jcut-mirror-card" style={{ height: '100%' }}>
       <CardActionArea
         to={getUrl(
           props.queryItem.docUrl || props.queryItem.url,

@@ -37,9 +37,9 @@ export const configGen = (version) => {
         '11': 'bullseye',
     };
     const release_name = versionMap[version];
-    return `deb https://mirrors.zju.edu.cn/raspbian/raspbian/ ${release_name} main non-free contrib rpi
-# deb-src https://mirrors.zju.edu.cn/raspbian/raspbian/ ${release_name} main non-free contrib rpi
-deb [arch=arm64] https://mirrors.zju.edu.cn/raspbian/multiarch/ ${release_name} main
+    return `deb https://mirrors.jcut.edu.cn/raspbian/raspbian/ ${release_name} main non-free contrib rpi
+# deb-src https://mirrors.jcut.edu.cn/raspbian/raspbian/ ${release_name} main non-free contrib rpi
+deb [arch=arm64] https://mirrors.jcut.edu.cn/raspbian/multiarch/ ${release_name} main
 `;
 }
 

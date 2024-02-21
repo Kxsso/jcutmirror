@@ -131,9 +131,9 @@ module.exports = {
     app.use(
       '/api',
       createProxyMiddleware({
-        target: 'http://mirrors.zju.edu.cn',
+        target: 'http://mirrors.jcut.edu.cn',
         onProxyReq: (proxyRes, req, res) => {
-          proxyRes.setHeader('host', 'mirrors.zju.edu.cn');
+          proxyRes.setHeader('host', 'mirrors.jcut.edu.cn');
         },
       }),
     );
