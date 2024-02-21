@@ -34,6 +34,8 @@ export default function configTheme(mode: PaletteMode): ThemeOptions {
         : {
             primary: {
               main: '#39DE96',
+              light: '#60e4ab',
+              dark: '#279b69',
             },
             neutral: {
               main: '#070707',
