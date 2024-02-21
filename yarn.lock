@@ -1613,10 +1613,10 @@
   dependencies:
     "@iconify/types" "*"
 
-"@iconify/icons-logos@^1.2.6":
-  version "1.2.23"
-  resolved "https://registry.npmmirror.com/@iconify/icons-logos/-/icons-logos-1.2.23.tgz#ee07383da155f79591054990bcc9c956ea080046"
-  integrity sha512-XQZyfF4AiXgQjZYN12LPymGhd9UMG0666hIzTYecM+d+jNqdLcs2zJLxNmBnTtPi+3t5JsHW+TSus7k9YydQzw==
+"@iconify/icons-logos@^1.2.36":
+  version "1.2.36"
+  resolved "https://registry.npmmirror.com/@iconify/icons-logos/-/icons-logos-1.2.36.tgz#39f0d438aa327991ab3f0280c98ed1d2fd233675"
+  integrity sha512-RVdZE9figuWmd8HeVmM8oQvOdv/4YzXV6lZ+G9QJgzCB/VBLV0inPltZxOt939oj4GbKbr7PF6J4bADMua/GPw==
   dependencies:
     "@iconify/types" "*"
 
@@ -1627,10 +1627,10 @@
   dependencies:
     "@iconify/types" "*"
 
-"@iconify/icons-simple-icons@^1.2.44":
-  version "1.2.44"
-  resolved "https://registry.yarnpkg.com/@iconify/icons-simple-icons/-/icons-simple-icons-1.2.44.tgz#2a238f6b615c3df9bb8e565d64ebef4ce3e5d752"
-  integrity sha512-pILdRcEqvmMSpZ7v6hh1dCh2iGJwZwAqqGGa6n6ui6pC4dPrhLOrYuODsPvRkvzXQYQWYUHkNybU9Vgb+8pMQw==
+"@iconify/icons-simple-icons@^1.2.74":
+  version "1.2.74"
+  resolved "https://registry.npmmirror.com/@iconify/icons-simple-icons/-/icons-simple-icons-1.2.74.tgz#b87e1e7b592e6d8d990a346d36d5087388015ffb"
+  integrity sha512-bsmbvwO8hauz49z740CYg70IDevOgshUoq4q1IKt6NnElnn+N2F6AseO3Uti82yUU4OHyQqkWjjUwoPTazlNnA==
   dependencies:
     "@iconify/types" "*"
 
